@@ -7,7 +7,7 @@ public class Contacts{
     
   }
   
-  public void addContacts(){
+  public void addContact(){
   
   }
   
