@@ -1,4 +1,4 @@
-package phone;
+package edu.project2;
 //Created by Sean C. on 3/1/2018
 
 /**
