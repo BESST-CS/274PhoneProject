@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
 /**
- * Handles Call data to contacts including call log
+ * Handles Call data to contacts including call log.
  */
 public class Calls {
     private HashMap<Contact, Integer> log;
@@ -29,4 +29,9 @@ public class Calls {
         }
     }
 
+    public void displayLog(){
+        for(Contact c : log.keySet()){
+
+        }
+    }
 }

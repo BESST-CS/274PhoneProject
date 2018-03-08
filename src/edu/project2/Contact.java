@@ -3,6 +3,9 @@ package edu.project2;
 
 import java.util.ArrayList;
 
+/**
+ * Contains data for a contact including name, number, email, and notes.
+ */
 public class Contact {
 
     private String name;

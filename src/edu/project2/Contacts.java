@@ -4,7 +4,7 @@ package edu.project2;
 import java.util.ArrayList;
 
 /**
- * Handles a list of all the Contact
+ * Handles a list of all the contacts.  Includes methods to add, delete, and modify contacts.  Handles creation of Contact objects
  */
 public class Contacts{
 
