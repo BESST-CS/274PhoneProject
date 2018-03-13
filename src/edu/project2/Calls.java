@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
+//thisNum = "(" + personalNum.substring(0, 3) + ") " + personalNum.substring(3, 6) + "-" + personalNum.substring(6);
 
 /**
  * Handles Call data to contacts including call log.

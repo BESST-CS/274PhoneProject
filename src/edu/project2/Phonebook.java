@@ -24,12 +24,12 @@ public class Phonebook {
 
     public static void main(String[] args) {
 
-
         ArrayList<Calls> log = new ArrayList<>();
         Scanner userInput = new Scanner(System.in);
 
 
         String userChoice;
+
         //Creating objects to call on later
         Contacts addressBook = new Contacts();
         Calls calls = new Calls(addressBook);
@@ -50,8 +50,6 @@ public class Phonebook {
 
                     String selection = userInput.next();
                     if (selection == "1") {
-
-
                         addressBook.addContact();
                     } else if (selection == "2") {
                         addressBook.editContact();

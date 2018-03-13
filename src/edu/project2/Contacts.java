@@ -3,12 +3,14 @@ package edu.project2;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 /**
  * Handles a list of all the contacts.  Includes methods to add, delete, and modify contacts.  Handles creation of Contact objects
  */
 public class Contacts{
 
+    private Scanner input = new Scanner(System.in);
     private ArrayList<Contact> favorites;
     private ArrayList<Contact> list;
 
@@ -17,7 +19,23 @@ public class Contacts{
         list = new ArrayList<>();
     }
 
-    public void addContact(Contact c){
+    public void addContact(){
+        //Ask for data first
+        String name;
+        String number;
+        String email;
+        String note;
+        System.out.println("What is the name of the contact?");
+        name = input.nextLine();
+        System.out.println("What is the number?");
+        number = input.next();
+        System.out.println("What is the email address?");
+        email = input.next();
+        System.out.println("Are there any notes for the contact?");
+        note = input.nextLine();
+
+        Contact c = new Contact(name, number, email, note);
+
         list.add(c);
         Collections.sort(list);
     }
