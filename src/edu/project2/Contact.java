@@ -2,7 +2,7 @@ package edu.project2;
 /**
  * @author - Sean Curley - seancurley007@gmail.com
  * @author - Hunter Davis - huntertigerdavis@gmail.com
- * @author - Yosseline Velasco -
+ * @author - Yosselin Velasco - yosselin.velasco98@gmail.com
  *
  * @version - 1.0.0
  * @since - 3/1/2018
