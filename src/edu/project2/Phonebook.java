@@ -78,20 +78,24 @@ public class Phonebook {
 
                         Contact c = new Contact(name, number, email, note);
 
-                        addressBook.addFavContact(c);
+                        addressBook.addContact(c);
                         break;
                     } else if (selection.equals("2")) {
+                        Contact place = new Contact();
                         String contactName = "";
+                        int userSelection = 0;
                         System.out.println("Enter the name of the contact to edit:");
                         contactName = userInput.nextLine();
                         for (Contact c : addressBook.list) {
                             if (c.getName().equals(contactName)) {
                                 System.out.println("What field of the contact would you like to edit:");
                                 System.out.println("1: Name\n2: Number\n3: Email\n4: Note");
-                                int userSelection = userInput.nextInt();
-                                addressBook.editContact(c, userSelection);
+                                userSelection = userInput.nextInt();
+                                place = c;
+                                break;
                             }
                         }
+                        addressBook.editContact(place, userSelection);
                         break;
                     } else if (selection.equals("3")) {
                         String contactName = "";
@@ -127,7 +131,7 @@ public class Phonebook {
 
                         Contact c = new Contact(name, number, email, note, path);
                         System.out.println("Adding favorite contact!");
-                        addressBook.addContact(c);
+                        addressBook.addFavContact(c);
                     }
 
                     break;

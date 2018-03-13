@@ -32,11 +32,7 @@ public class Contacts{
      * @param c - Contact object with information filled in
      */
     public void addContact(Contact c){
-        if(c.hasPicture()){
-            favorites.add(c);
-        }else{
-            list.add(c);
-        }
+        list.add(c);
         Collections.sort(list);
         Collections.sort(favorites);
     }
@@ -64,27 +60,27 @@ public class Contacts{
         //Editing the name of the contact
         if (i == 1){
             System.out.println("Enter a new name for the contact: ");
-            Contact a = new Contact(input.nextLine(), c.getNumber(), c.getEmail(), c.getNote());
+            Contact a = new Contact(input.nextLine(), c.getRawNumber(), c.getEmail(), c.getNote());
             addContact(a);
             deleteContact(c);
 
         //Editing the phone number of the contact
         } else if (i == 2){
             System.out.println("Enter a new phone number for the contact: ");
-            Contact a = new Contact(c.getName(), input.next(), c.getEmail(), c.getNote());
+            Contact a = new Contact(c.getName(), input.nextLine(), c.getEmail(), c.getNote());
             addContact(a);
             deleteContact(c);
 
         //Editing the email address of the contact
         } else if (i == 3){
             System.out.println("Enter a new email for the contact: ");
-            Contact a = new Contact(c.getName(), c.getNumber(), input.next(), c.getNote());
+            Contact a = new Contact(c.getName(), c.getRawNumber(), input.nextLine(), c.getNote());
             addContact(a);
             deleteContact(c);
         //Editing the note of the contact
         } else {
             System.out.println("Enter a new note for the contact: ");
-            Contact a = new Contact(input.nextLine(), c.getNumber(), c.getEmail(), input.next());
+            Contact a = new Contact(input.nextLine(), c.getRawNumber(), c.getEmail(), input.nextLine());
             addContact(a);
             deleteContact(c);
         }

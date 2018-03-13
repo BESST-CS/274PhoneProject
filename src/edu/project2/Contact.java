@@ -41,7 +41,7 @@ public class Contact implements Comparable{
      */
     public Contact(String name, String number, String email, String note){
         this.name = name;
-        this.number = modNumber(number);
+        this.number = number;
         this.email = email;
         this.note = note;
         picture = null;
@@ -57,7 +57,7 @@ public class Contact implements Comparable{
      */
     public Contact(String name, String number, String email, String note, String directory){
         this.name = name;
-        this.number = modNumber(number);
+        this.number = number;
         this.email = email;
         this.note = note;
         this.picture = new FavoriteContactFrame(directory, 1200, 400, name, modNumber(number), email, note);
@@ -73,16 +73,22 @@ public class Contact implements Comparable{
             return "(" + num.substring(0, 3) + ") " + num.substring(3, 6) + "-" + num.substring(6);
         }else if(num.length() == 7){
             return num.substring(0,3)+"-"+num.substring(3);
+        }else {
+            return null;
         }
-        return null;
     }
 
     /**
      * Returns the phone number of the given Contact object
      * @return Returns number as a String
      */
-    public String getNumber(){return this.number;}
+    public String getNumber(){return modNumber(number);}
 
+    /**
+     * Returns the number as a raw number format.
+     * @return Returns the phone number without any kind of formatting to include symbols.
+     */
+    public String getRawNumber(){return this.number;}
     /**
      * Returns the name of the given Contact object
      * @return Returns the name as a String
@@ -115,7 +121,7 @@ public class Contact implements Comparable{
         if(picture != null){
             picture.displayContactFrame();
         }else{
-            System.out.printf("Name: %s\nNumber: %s\nEmail: %s\nNote: %s", name, number, email, note);
+            System.out.printf("Name: %s\nNumber: %s\nEmail: %s\nNote: %s", name, getNumber(), email, note);
         }
     }
 
