@@ -60,7 +60,7 @@ public class Contact implements Comparable{
         this.number = modNumber(number);
         this.email = email;
         this.note = note;
-        this.picture = new FavoriteContactFrame(directory, 400, 400, name, modNumber(number), email, note);
+        this.picture = new FavoriteContactFrame(directory, 1200, 400, name, modNumber(number), email, note);
     }
 
     /**
