@@ -67,6 +67,7 @@ public class Phonebook {
                         Contact c = new Contact(name, number, email, note);
 
                         addressBook.addContact(c);
+                        break;
                     } else if (selection.equals("2")) {
                         String contactName = "";
                         System.out.println("Enter the name of the contact to edit:");
@@ -96,6 +97,7 @@ public class Phonebook {
                         System.out.println();
                         break;
                     }
+                    break;
                 case RECEIVE_CALL:
                     displayMenu(2);
                     String callToReceive = userInput.next();
@@ -123,7 +125,7 @@ public class Phonebook {
     /**
      * Displays a menu with the options for the user.
      */
-    public static void displayMenu ( int selector){
+    public static void displayMenu (int selector){
 
         switch (selector) {
             case 0:
