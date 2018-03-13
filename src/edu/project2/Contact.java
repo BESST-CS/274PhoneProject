@@ -113,9 +113,9 @@ public class Contact implements Comparable{
     public String toString(){return name;}
 
     /**
-     * @see java.util.Collections#sort(List)
      * Overridden compareTo method from Comparable interface to allow for
      * sorting to work properly
+     * @see java.util.Collections#sort(List)
      * @param o Other object to test for comparability to a Contact object,
      *          and then to compare between the two based on the lexigraphical
      *          comparison of their names
