@@ -29,7 +29,7 @@ public class Calls {
         }else{
             concat = "PM";
         }
-        return format2.format(LocalDateTime.now())+" "+concat;
+        return format2.format(LocalDateTime.now()) + " " + concat;
     }
 
     private String modNumber(String num){
@@ -60,8 +60,8 @@ public class Calls {
         Contact place = new Contact();
         int iter = 0;
         int select;
-
-        while(true){
+        boolean run = true;
+        while(run){
             for(String i : log.keySet()){
                 for(Contact c : contacts.list){
                     if(c.getNumber().equals(i)){
@@ -89,6 +89,7 @@ public class Calls {
                     }
                 }
                 else{
+                    run = false;
                     break;
                 }
             }
