@@ -41,7 +41,7 @@ public class Phonebook {
                 case MAKE_CALL:
                     System.out.println("Enter a phone number, contact name, or speed dial preset: ");
                     String option = userInput.next();
-
+                    calls.makeCall(option, "OUTGOING");
                     System.out.println();
                     break;
                 case CONTACT_BOOK:
@@ -50,21 +50,57 @@ public class Phonebook {
 
                     String selection = userInput.next();
                     if (selection == "1") {
-                        addressBook.addContact();
+                        //Ask for data first
+                        String name = "";
+                        String number = "";
+                        String email = "";
+                        String note = "";
+                        System.out.println("What is the name of the contact?");
+                        name = userInput.nextLine();
+                        System.out.println("What is the number?");
+                        number = userInput.next();
+                        System.out.println("What is the email address?");
+                        email = userInput.next();
+                        System.out.println("Are there any notes for the contact?");
+                        note = userInput.nextLine();
+
+                        Contact c = new Contact(name, number, email, note);
+
+                        addressBook.addContact(c);
                     } else if (selection == "2") {
-                        addressBook.editContact();
+                        String contactName = "";
+                        System.out.println("Enter the name of the contact to edit:");
+                        contactName = userInput.next();
+                        for (Contact c : addressBook.list) {
+                            if (c.getName() == contactName) {
+                                System.out.println("What field of the contact would you like to edit:");
+                                System.out.println("1: Name\n2: Number\n3: Email\n4: Note");
+                                int userSelection = userInput.nextInt();
+                                addressBook.editContact(c, userSelection);
+
+                            }
+                        }
                     } else if (selection == "3") {
-                        addressBook.deleteContact();
+                        String contactName = "";
+                        System.out.println("Enter the name of the contact to delete: ");
+                        contactName = userInput.next();
+                        for (Contact c: addressBook.list){
+                            if (c.getName() == contactName){
+                                System.out.println("Deleting: " + c.getName() + " from contacts.");
+                                addressBook.deleteContact(c);
+                            }
+                        }
+
                     } else if (selection == "4") {
                         addressBook.displayAll();
                         System.out.println();
                         break;
                     }
                 case RECEIVE_CALL:
-                    System.out.println("Enter the number that is calling, or 'random' for a random number: ");
+                    System.out.println("Enter the number that is calling, or the name of a contact: ");
                     displayMenu(2);
                     String callToReceive = userInput.next();
-                    calls.makeCall(callToReceive, );
+                    calls.makeCall(callToReceive, "INCOMING");
                     //Test if number or letter. If number, call that number. If letter, do random #
                     System.out.println();
                     break;

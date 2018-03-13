@@ -46,6 +46,8 @@ public class Contact implements Comparable{
 
     public String getEmail(){return this.email;}
 
+    public String getNote(){return this.note;}
+
     public void displayNotes(){System.out.println(note);}
 
     public void displayContact() {

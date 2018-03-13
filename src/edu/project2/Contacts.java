@@ -1,6 +1,8 @@
 package edu.project2;
 //Created by Sean C. on 3/1/2018
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -11,31 +13,15 @@ import java.util.Scanner;
 public class Contacts{
 
     private Scanner input = new Scanner(System.in);
-    private ArrayList<Contact> favorites;
-    private ArrayList<Contact> list;
+    public ArrayList<Contact> favorites;
+    public ArrayList<Contact> list;
 
     public Contacts(){
         favorites = new ArrayList<>();
         list = new ArrayList<>();
     }
 
-    public void addContact(){
-        //Ask for data first
-        String name;
-        String number;
-        String email;
-        String note;
-        System.out.println("What is the name of the contact?");
-        name = input.nextLine();
-        System.out.println("What is the number?");
-        number = input.next();
-        System.out.println("What is the email address?");
-        email = input.next();
-        System.out.println("Are there any notes for the contact?");
-        note = input.nextLine();
-
-        Contact c = new Contact(name, number, email, note);
-
+    public void addContact(Contact c){
         list.add(c);
         Collections.sort(list);
     }
@@ -47,12 +33,39 @@ public class Contacts{
     	}
     }
 
-    public void editContact(int i){
-        list.get(i);
+    public void editContact(Contact c, int i){
+
+        //Editing the name of the contact
+        if (i == 1){
+            System.out.println("Enter a new name for the contact: ");
+            Contact a = new Contact(input.nextLine(), c.getNumber(), c.getEmail(), c.getNote());
+            addContact(a);
+            deleteContact(c);
+
+        //Editing the phone number of the contact
+        } else if (i == 2){
+            System.out.println("Enter a new phone number for the contact: ");
+            Contact a = new Contact(c.getName(), input.next(), c.getEmail(), c.getNote());
+            addContact(a);
+            deleteContact(c);
+
+        //Editing the email address of the contact
+        } else if (i == 3){
+            System.out.println("Enter a new email for the contact: ");
+            Contact a = new Contact(c.getName(), c.getNumber(), input.next(), c.getNote());
+            addContact(a);
+            deleteContact(c);
+        //Editing the note of the contact
+        } else {
+            System.out.println("Enter a new note for the contact: ");
+            Contact a = new Contact(input.nextLine(), c.getNumber(), c.getEmail(), input.next());
+            addContact(a);
+            deleteContact(c);
+        }
     }
     
-    public void deleteContact(int i){
-    	list.remove(i);
+    public void deleteContact(Contact c){
+    	list.remove(c);
     }
     
     public void addFavContact(Contact c) {
