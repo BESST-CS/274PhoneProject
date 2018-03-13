@@ -79,27 +79,4 @@ public class Contact implements Comparable{
         }
         return 0;
     }
-
-    public static void editContact(Contact c){
-        Scanner k  = new Scanner(System.in);
-        System.out.println("What would you like to modify?\n" +
-                           "1: Name\n2: Number\n3: Email\n4: Note\n0: Done\n>> ");
-        int select = k.nextInt();
-        switch(select){
-            case 1:
-                System.out.println("Current Value: "+c.name);
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 0:
-                break;
-            default:
-                break;
-
-        }
-    }
 }

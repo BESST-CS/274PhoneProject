@@ -80,10 +80,6 @@ public class Contacts{
     	}
 	}
     
-    public void editFavContact(int i) {
-    	favorites.get(i);
-    }
-    
     public void deleteFavContact(int i) {
     	list.remove(i);
     }
