@@ -50,7 +50,7 @@ public class Calls {
             log.get(number).add(getDate().concat("          "+direction));
         }
         else{
-            log.get(number).add(direction.concat(" "+getDate()));
+            log.get(number).add(getDate().concat("          "+direction));
         }
     }
 
@@ -60,8 +60,7 @@ public class Calls {
         Contact place = new Contact();
         int iter = 0;
         int select;
-        boolean run = true;
-        while(run){
+        while(true){
             for(String i : log.keySet()){
                 for(Contact c : contacts.list){
                     if(c.getNumber().equals(i)){
@@ -80,18 +79,20 @@ public class Calls {
                 }else{
                     System.out.println(i+":\t\t("+log.get(i).size()+")");
                 }
-                System.out.println("If you would like to expand a call, enter its number in the list:\nEnter 0 to exit.\n>>");
-                select = k.nextInt();
-                if(select != 0 && select-1 <= log.keySet().size()){
-                    System.out.println(log.keySet().toArray()[select-1]+":");
-                    for(String s : log.get(log.keySet().toArray()[select-1])){
-                        System.out.println("\t"+s);
-                    }
+            }
+            System.out.println("If you would like to expand a call, enter its number in the list:\nEnter 0 to exit.\n>>");
+            select = k.nextInt();
+            if(select != 0 && select-1 <= log.keySet().size()){
+                System.out.println(log.keySet().toArray()[select-1]+":");
+                for(String s : log.get(log.keySet().toArray()[select-1])){
+                    System.out.println("\t"+s);
                 }
-                else{
-                    run = false;
-                    break;
-                }
+            }
+            else if(select == 0){
+                break;
+            }
+            else{
+                System.out.println("Invalid Input");
             }
         }
     }

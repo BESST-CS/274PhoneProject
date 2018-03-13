@@ -87,6 +87,7 @@ public class Contact implements Comparable{
         int select = k.nextInt();
         switch(select){
             case 1:
+                System.out.println("Current Value: "+c.name);
                 break;
             case 2:
                 break;
