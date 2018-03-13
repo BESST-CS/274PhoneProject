@@ -34,6 +34,9 @@ public class Calls {
      * @param direction
      */
     public void makeCall(String number, String direction){
+        if(direction.equals("OUTGOING") && number.length() == 1){
+            number = contacts.favorites.get(Integer.valueOf(number)).getNumber();
+        }
         if(!log.keySet().contains(number)){
             log.put(number, new ArrayList<>());
             log.get(number).add(getDate().concat("          "+direction));
