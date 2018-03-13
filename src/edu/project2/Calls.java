@@ -38,19 +38,30 @@ public class Calls {
 
     /**
      * Adds a call to the log.
-     * @param number
+     * @param target
      * @param direction
      */
-    public void makeCall(String number, String direction){
-        if(direction.equals("OUTGOING") && number.length() == 1){
-            number = contacts.favorites.get(Integer.valueOf(number)).getNumber();
+    public void makeCall(String target, String direction){
+        if(direction.equals("OUTGOING") && target.length() == 1){
+            target = contacts.favorites.get(Integer.valueOf(target)).getNumber();
         }
-        if(!log.keySet().contains(number)){
-            log.put(number, new ArrayList<>());
-            log.get(number).add(getDate().concat("          "+direction));
+        if(target.matches("[a-zA-Z]+")){
+            for(Contact c : contacts.list){
+                if(target.equals(c.getName())){
+                    target = c.getNumber();
+                }
+            }
+            for(Contact c : contacts.favorites){
+                if(target.equals(c.getName())){
+                    target = c.getNumber();
+                }
+            }
         }
-        else{
-            log.get(number).add(getDate().concat("          "+direction));
+        if(log.containsKey(target)){
+            log.get(target).add(getDate().concat("          "+direction));
+        }else{
+            log.put(target, new ArrayList<>());
+            log.get(target).add(getDate().concat("          "+direction));
         }
     }
 
@@ -62,6 +73,7 @@ public class Calls {
         int select;
         while(true){
             for(String i : log.keySet()){
+                hasContact = false;
                 for(Contact c : contacts.list){
                     if(c.getNumber().equals(i)){
                         hasContact = true;
