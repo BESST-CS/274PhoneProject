@@ -62,7 +62,7 @@ public class Contact implements Comparable{
         if(picture != null){
             picture.displayContactFrame();
         }else{
-            System.out.printf("Name: %s\nNumber: %s\nEmail: %s\nNote: %s\n", name, number, email, note);
+            System.out.printf("Name: %s\nNumber: %s\nEmail: %s\nNote: %s", name, number, email, note);
         }
     }
 
