@@ -78,9 +78,9 @@ public class Contacts{
             addContact(a);
             deleteContact(c);
         //Editing the note of the contact
-        } else {
+        } else if (i == 4) {
             System.out.println("Enter a new note for the contact: ");
-            Contact a = new Contact(input.nextLine(), c.getRawNumber(), c.getEmail(), input.nextLine());
+            Contact a = new Contact(c.getName(), c.getRawNumber(), c.getEmail(), input.nextLine());
             addContact(a);
             deleteContact(c);
         }
