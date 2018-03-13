@@ -52,13 +52,13 @@ public class Calls {
 
         while(true){
             for(String i : log.keySet()){
-                for(Contact c : contacts.list()){
+                for(Contact c : contacts.list){
                     if(c.getNumber().equals(i)){
                         hasContact = true;
                         place = c;
                     }
                 }
-                for(Contact c : contacts.favorites()){
+                for(Contact c : contacts.favorites){
                     if(c.getNumber().equals(i)){
                         hasContact = true;
                         place = c;
@@ -80,13 +80,13 @@ public class Calls {
             }
             //
             for(String s : log.keySet()){
-                for(Contact c : contacts.list()){
+                for(Contact c : contacts.list){
                     if(c.getNumber().equals(s)){
                         hasContact = true;
                         place = c;
                     }
                 }
-                for(Contact c : contacts.favorites()){
+                for(Contact c : contacts.favorites){
                     if(c.getNumber().equals(s)){
                         hasContact = true;
                         place = c;
