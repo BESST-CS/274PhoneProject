@@ -1,4 +1,9 @@
 package edu.project2;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
 /**
  * @author - Sean Curley - seancurley007@gmail.com
  * @author - Hunter Davis - huntertigerdavis@gmail.com
@@ -6,12 +11,6 @@ package edu.project2;
  *
  * @version - 1.0.0
  * @since - 3/1/2018
- */
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Scanner;
-
-/**
  * Handles a list of all the contacts. Includes methods to add, delete, and modify contacts.  Handles creation of Contact objects
  */
 public class Contacts{

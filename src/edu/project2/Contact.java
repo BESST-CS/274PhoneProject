@@ -1,4 +1,8 @@
 package edu.project2;
+
+import java.awt.*;
+import java.util.List;
+
 /**
  * @author - Sean Curley - seancurley007@gmail.com
  * @author - Hunter Davis - huntertigerdavis@gmail.com
@@ -6,12 +10,6 @@ package edu.project2;
  *
  * @version - 1.0.0
  * @since - 3/1/2018
- */
-
-import java.awt.*;
-import java.util.List;
-
-/**
  * Contains data for a contact including name, number, email, and notes.
  */
 public class Contact implements Comparable{

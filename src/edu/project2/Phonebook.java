@@ -1,4 +1,8 @@
 package edu.project2;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  * @author - Sean Curley - seancurley007@gmail.com
  * @author - Hunter Davis - huntertigerdavis@gmail.com
@@ -6,13 +10,6 @@ package edu.project2;
  *
  * @version - 1.0.0
  * @since - 3/1/2018
- */
-
-
-import java.util.ArrayList;
-import java.util.Scanner;
-
-/**
  * Class for running the module.  Depends on Calls and Contacts
  */
 public class Phonebook {
@@ -54,7 +51,7 @@ public class Phonebook {
                 case MAKE_CALL:
                     //Opens the make call sub-menu
                     System.out.println("Enter a phone number, contact name, or speed dial preset: ");
-                    String option = userInput.next();
+                    String option = userInput.nextLine();
                     calls.makeCall(option, "OUTGOING");
                     System.out.println();
                     break;
@@ -138,7 +135,7 @@ public class Phonebook {
                 case RECEIVE_CALL:
                     //Opens the receive call sub-menu
                     displayMenu(2);
-                    String callToReceive = userInput.next();
+                    String callToReceive = userInput.nextLine();
                     calls.makeCall(callToReceive, "INCOMING");
                     //Test if number or letter. If number, call that number. If letter, do random #
                     System.out.println();

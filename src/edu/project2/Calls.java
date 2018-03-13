@@ -1,12 +1,5 @@
 package edu.project2;
-/**
- * @author - Sean Curley - seancurley007@gmail.com
- * @author - Hunter Davis - huntertigerdavis@gmail.com
- * @author - Yosselin Velasco - yosselin.velasco@gmail.com
- *
- * @version - 1.0.0
- * @since - 3/1/2018
- */
+
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -15,6 +8,13 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 /**
+ * @author - Sean Curley - seancurley007@gmail.com
+ * @author - Hunter Davis - huntertigerdavis@gmail.com
+ * @author - Yosselin Velasco - yosselin.velasco@gmail.com
+ *
+ * @version - 1.0.0
+ * @since - 3/1/2018
+ *
  * Handles Call data to contacts including call log.
  */
 public class Calls {
