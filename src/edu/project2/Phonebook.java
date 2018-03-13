@@ -48,8 +48,8 @@ public class Phonebook {
                     displayMenu(1);
                     System.out.println("Opening contact book, what would you like to do?");
 
-                    String selection = userInput.next();
-                    if (selection == "1") {
+                    String selection = userInput.nextLine();
+                    if (selection.equals("1")) {
                         //Ask for data first
                         String name = "";
                         String number = "";
@@ -67,12 +67,12 @@ public class Phonebook {
                         Contact c = new Contact(name, number, email, note);
 
                         addressBook.addContact(c);
-                    } else if (selection == "2") {
+                    } else if (selection.equals("2")) {
                         String contactName = "";
                         System.out.println("Enter the name of the contact to edit:");
                         contactName = userInput.next();
                         for (Contact c : addressBook.list) {
-                            if (c.getName() == contactName) {
+                            if (c.getName().equals(contactName)) {
                                 System.out.println("What field of the contact would you like to edit:");
                                 System.out.println("1: Name\n2: Number\n3: Email\n4: Note");
                                 int userSelection = userInput.nextInt();
@@ -80,24 +80,23 @@ public class Phonebook {
 
                             }
                         }
-                    } else if (selection == "3") {
+                    } else if (selection.equals("3")) {
                         String contactName = "";
                         System.out.println("Enter the name of the contact to delete: ");
                         contactName = userInput.next();
                         for (Contact c: addressBook.list){
-                            if (c.getName() == contactName){
+                            if (c.getName().equals(contactName)){
                                 System.out.println("Deleting: " + c.getName() + " from contacts.");
                                 addressBook.deleteContact(c);
                             }
                         }
 
-                    } else if (selection == "4") {
+                    } else if (selection.equals("4")) {
                         addressBook.displayAll();
                         System.out.println();
                         break;
                     }
                 case RECEIVE_CALL:
-                    System.out.println("Enter the number that is calling, or the name of a contact: ");
                     displayMenu(2);
                     String callToReceive = userInput.next();
                     calls.makeCall(callToReceive, "INCOMING");
@@ -107,16 +106,17 @@ public class Phonebook {
                 case CALL_HISTORY:
                     displayMenu(3);
                     System.out.println("Displaying call history: ");
+                    calls.displayLog();
                     System.out.println();
                     break;
                 case QUIT_OPTION:
-                    System.out.println("Goodbye");
+                    System.out.println("Goodbye.");
                     break;
                 default:
                     System.out.println("Please type one of the options in the menu.");
 
             }
-        } while (!userChoice.equals(QUIT_OPTION)) ;
+        } while (!userChoice.equals(QUIT_OPTION));
     }
 
 
@@ -139,11 +139,11 @@ public class Phonebook {
             case 1:
                 //Contact Book Sub-menu
                 System.out.println("1. Add contact\n2. Edit contact\n3. Delete contact\n4. Display contacts");
-
                 break;
 
             case 2:
                 //Receive Call Sub-menu
+                System.out.println("Enter the number that is calling, or the name of a contact: ");
                 break;
             case 3:
                 //Call History Sub-menu

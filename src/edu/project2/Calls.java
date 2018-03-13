@@ -21,7 +21,15 @@ public class Calls {
 
     private String getDate(){
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/mm/yyyy HH:mm:ss");
-        return format.format(LocalDateTime.now());
+        DateTimeFormatter format2 = DateTimeFormatter.ofPattern("dd/mm/yyyy hh:mm:ss");
+        String concat;
+        // 11-13 non-inclusive
+        if(Integer.parseInt(format.format(LocalDateTime.now()).toString().substring(11, 13)) <= 12){
+            concat = "AM";
+        }else{
+            concat = "PM";
+        }
+        return format2.format(LocalDateTime.now())+" "+concat;
     }
 
     private String modNumber(String num){
@@ -77,28 +85,8 @@ public class Calls {
                         System.out.println("\t"+s);
                     }
                 }
-            }
-            //
-            for(String s : log.keySet()){
-                for(Contact c : contacts.list){
-                    if(c.getNumber().equals(s)){
-                        hasContact = true;
-                        place = c;
-                    }
-                }
-                for(Contact c : contacts.favorites){
-                    if(c.getNumber().equals(s)){
-                        hasContact = true;
-                        place = c;
-                    }
-                }
-                if(hasContact){
-                    System.out.println(place.toString()+":\n");
-                }else{
-                    System.out.println(s+":\n");
-                }
-                for(String st : log.get(s)){
-                    System.out.println("\t"+st);
+                else{
+                    break;
                 }
             }
         }
