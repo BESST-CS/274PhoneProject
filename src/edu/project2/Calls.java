@@ -3,16 +3,19 @@ package edu.project2;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * Handles Call data to contacts including call log.
  */
 public class Calls {
-    private HashMap<Contact, Integer> log;
+    private HashMap<String, ArrayList<String>> log;
+    Contacts contacts;
 
-    public Calls(){
+    public Calls(Contacts contacts){
         log = new HashMap<>();
+        this.contacts = contacts;
     }
 
     private String getDate(){
@@ -20,18 +23,27 @@ public class Calls {
         return format.format(LocalDateTime.now());
     }
 
-    public void makeCall(Contact c){
-        if(!log.keySet().contains(c)){
-            log.put(c, 1);
+    /**
+     * Adds a call to the log.
+     * @param number
+     * @param direction
+     */
+    public void makeCall(String number, String direction){
+        if(!log.keySet().contains(number)){
+            log.put(number, new ArrayList<>());
+            log.get(number).add(direction.concat(" "+getDate()));
         }
         else{
-            log.replace(c, log.get(c)+1);
+            log.get(number).add(direction.concat(" "+getDate()));
         }
     }
 
     public void displayLog(){
-        for(Contact c : log.keySet()){
-
+        for(String s : log.keySet()){
+            System.out.println(s+":\n");
+            for(String st : log.get(s)){
+                System.out.println("\t"+st);
+            }
         }
     }
 }

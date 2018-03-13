@@ -30,7 +30,7 @@ public class Contacts{
     }
 
     public void editContact(int i){
-    	list.get(i);
+        list.get(i);
     }
     
     public void deleteContact(int i){
@@ -43,14 +43,14 @@ public class Contacts{
     }
     
     public void displayFavs() {
-    	for(Contact2 c: favorites) {
+    	for(Contact c: favorites) {
     		c.displayContact();
     		System.out.println("\n");
     	}
 	}
     
     public void editFavContact(int i) {
-    	favorties.get(i);
+    	favorites.get(i);
     }
     
     public void deleteFavContact(int i) {
