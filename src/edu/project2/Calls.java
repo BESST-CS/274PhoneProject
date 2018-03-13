@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
-//thisNum = "(" + personalNum.substring(0, 3) + ") " + personalNum.substring(3, 6) + "-" + personalNum.substring(6);
+import java.util.Scanner;
 
 /**
  * Handles Call data to contacts including call log.
@@ -24,6 +24,10 @@ public class Calls {
         return format.format(LocalDateTime.now());
     }
 
+    private String modNumber(String num){
+        return "(" + num.substring(0, 3) + ") " + num.substring(3, 6) + "-" + num.substring(6);
+    }
+
     /**
      * Adds a call to the log.
      * @param number
@@ -32,7 +36,7 @@ public class Calls {
     public void makeCall(String number, String direction){
         if(!log.keySet().contains(number)){
             log.put(number, new ArrayList<>());
-            log.get(number).add(direction.concat(" "+getDate()));
+            log.get(number).add(getDate().concat("          "+direction));
         }
         else{
             log.get(number).add(direction.concat(" "+getDate()));
@@ -40,10 +44,62 @@ public class Calls {
     }
 
     public void displayLog(){
-        for(String s : log.keySet()){
-            System.out.println(s+":\n");
-            for(String st : log.get(s)){
-                System.out.println("\t"+st);
+        Scanner k = new Scanner(System.in);
+        boolean hasContact = false;
+        Contact place = new Contact();
+        int iter = 0;
+        int select;
+
+        while(true){
+            for(String i : log.keySet()){
+                for(Contact c : contacts.list()){
+                    if(c.getNumber().equals(i)){
+                        hasContact = true;
+                        place = c;
+                    }
+                }
+                for(Contact c : contacts.favorites()){
+                    if(c.getNumber().equals(i)){
+                        hasContact = true;
+                        place = c;
+                    }
+                }
+                if(hasContact){
+                    System.out.println(place.toString()+":\t\t("+log.get(i).size()+")");
+                }else{
+                    System.out.println(i+":\t\t("+log.get(i).size()+")");
+                }
+                System.out.println("If you would like to expand a call, enter its number in the list:\nEnter 0 to exit.\n>>");
+                select = k.nextInt();
+                if(select != 0 && select-1 <= log.keySet().size()){
+                    System.out.println(log.keySet().toArray()[select-1]+":");
+                    for(String s : log.get(log.keySet().toArray()[select-1])){
+                        System.out.println("\t"+s);
+                    }
+                }
+            }
+            //
+            for(String s : log.keySet()){
+                for(Contact c : contacts.list()){
+                    if(c.getNumber().equals(s)){
+                        hasContact = true;
+                        place = c;
+                    }
+                }
+                for(Contact c : contacts.favorites()){
+                    if(c.getNumber().equals(s)){
+                        hasContact = true;
+                        place = c;
+                    }
+                }
+                if(hasContact){
+                    System.out.println(place.toString()+":\n");
+                }else{
+                    System.out.println(s+":\n");
+                }
+                for(String st : log.get(s)){
+                    System.out.println("\t"+st);
+                }
             }
         }
     }
