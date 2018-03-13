@@ -14,11 +14,23 @@ public class Calls {
     private HashMap<String, ArrayList<String>> log;
     Contacts contacts;
 
+    /**
+     * Constructor for the Calls object that includes a
+     * Contacts database object.
+     * @param contacts hold the reference to a database
+     *                 of Contact objects to reference.
+     */
     public Calls(Contacts contacts){
         log = new HashMap<>();
         this.contacts = contacts;
     }
 
+    /**
+     * Returns the date as a String in the 12-Hour formatting
+     * along with AM/PM designation based on the 24 hour format.
+     * @return Date as a String in 12-Hour format, with AM/PM
+     * designator attached
+     */
     private String getDate(){
         DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/mm/yyyy HH:mm:ss");
         DateTimeFormatter format2 = DateTimeFormatter.ofPattern("dd/mm/yyyy hh:mm:ss");
@@ -38,8 +50,8 @@ public class Calls {
 
     /**
      * Adds a call to the log.
-     * @param target
-     * @param direction
+     * @param target The target number or contact to recieve from or send to.
+     * @param direction Refers to incoming or outgoing
      */
     public void makeCall(String target, String direction){
         if(direction.equals("OUTGOING") && target.length() == 1){
@@ -65,6 +77,12 @@ public class Calls {
         }
     }
 
+    /**
+     * Displays the call log using the lists from static Contacts objects.
+     * Serializes the maps in this class and references keys to access
+     * values in terms of ArrayLists and generate a call log from those
+     * ArrayLists.
+     */
     public void displayLog(){
         Scanner k = new Scanner(System.in);
         boolean hasContact = false;
