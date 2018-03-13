@@ -1,10 +1,7 @@
 package edu.project2;
 //Created by Sean C. on 3/8/2018
 
-import javax.swing.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Contains data for a contact including name, number, email, and notes.
