@@ -1,5 +1,5 @@
 package edu.project2;
-//Created by Hunter D. on 3/1/2018
+//Created by Hunter D. on 3/1/2018 ye
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -86,12 +86,12 @@ public class Phonebook {
     }
 
 
-        /**
-         * Displays a menu with the options for the user.
-         */
-        public static void displayMenu ( int selector){
+    /**
+     * Displays a menu with the options for the user.
+     */
+    public static void displayMenu ( int selector){
 
-            switch (selector) {
+        switch (selector) {
             case 0:
                 //Main Menu
                 System.out.println("------------------------------");
