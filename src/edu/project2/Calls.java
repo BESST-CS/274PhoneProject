@@ -72,7 +72,7 @@ public class Calls {
      */
     public void makeCall(String target, String direction){
         if(direction.equals("OUTGOING") && target.length() == 1){
-            target = modNumber(contacts.favorites.get(Integer.valueOf(target)).getNumber());
+            target = contacts.favorites.get(Integer.valueOf(target)-1).getNumber();
         }
         else if(target.matches("[a-zA-Z]+")){
             for(Contact c : contacts.list){
