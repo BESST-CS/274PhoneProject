@@ -41,13 +41,13 @@ public class Contacts{
      * Prints all of the contacts with formatting to the console
      */
     public void displayAll() {
-    	for(Contact c: favorites){
-    	    displayFavs();
+        for(Contact c: favorites){
+            displayFavs();
         }
         for(Contact c: list) {
-    		c.displayContact();
-    		System.out.println("\n");
-    	}
+            c.displayContact();
+            System.out.println("\n");
+        }
     }
 
     /**
@@ -64,7 +64,7 @@ public class Contacts{
             addContact(a);
             deleteContact(c);
 
-        //Editing the phone number of the contact
+            //Editing the phone number of the contact
         } else if (i == 2){
             System.out.println("Enter a new phone number for the contact: ");
             Contact a = new Contact(c.getName(), input.nextLine(), c.getEmail(), c.getNote());
@@ -80,7 +80,7 @@ public class Contacts{
         //Editing the note of the contact
         } else {
             System.out.println("Enter a new note for the contact: ");
-            Contact a = new Contact(input.nextLine(), c.getRawNumber(), c.getEmail(), input.nextLine());
+            Contact a = new Contact(c.getName(), c.getRawNumber(), c.getEmail(), input.nextLine());
             addContact(a);
             deleteContact(c);
         }
@@ -91,8 +91,8 @@ public class Contacts{
      * @param c - Contact object to delete from the ArrayList
      */
     public void deleteContact(Contact c){
-    	list.remove(c);
-    	favorites.remove(c);
+        list.remove(c);
+        favorites.remove(c);
     }
 
     /**
@@ -100,19 +100,19 @@ public class Contacts{
      * @param c - Contact object
      */
     public void addFavContact(Contact c) {
-    	favorites.add(c);
-    	Collections.sort(favorites);
+        favorites.add(c);
+        Collections.sort(favorites);
     }
 
     /**
      * Displays the favorite contacts
      */
     public void displayFavs() {
-    	for(Contact c: favorites) {
-    		c.displayContact();
-    		System.out.println("\n");
-    	}
-	}
+        for(Contact c: favorites) {
+            c.displayContact();
+            System.out.println("\n");
+        }
+    }
 
     /**
      * Deletes a selected favorite contact
