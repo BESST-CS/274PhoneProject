@@ -45,9 +45,9 @@ public class Phonebook {
                     System.out.println();
                     break;
                 case CONTACT_BOOK:
-                    displayMenu(1);
                     System.out.println("Opening contact book, what would you like to do?");
-
+                    displayMenu(1);
+                    userInput.nextLine();
                     String selection = userInput.nextLine();
                     if (selection.equals("1")) {
                         //Ask for data first
@@ -55,12 +55,13 @@ public class Phonebook {
                         String number = "";
                         String email = "";
                         String note = "";
+
                         System.out.println("What is the name of the contact?");
                         name = userInput.nextLine();
                         System.out.println("What is the number?");
-                        number = userInput.next();
+                        number = userInput.nextLine();
                         System.out.println("What is the email address?");
-                        email = userInput.next();
+                        email = userInput.nextLine();
                         System.out.println("Are there any notes for the contact?");
                         note = userInput.nextLine();
 
@@ -71,16 +72,16 @@ public class Phonebook {
                     } else if (selection.equals("2")) {
                         String contactName = "";
                         System.out.println("Enter the name of the contact to edit:");
-                        contactName = userInput.next();
+                        contactName = userInput.nextLine();
                         for (Contact c : addressBook.list) {
                             if (c.getName().equals(contactName)) {
                                 System.out.println("What field of the contact would you like to edit:");
                                 System.out.println("1: Name\n2: Number\n3: Email\n4: Note");
                                 int userSelection = userInput.nextInt();
                                 addressBook.editContact(c, userSelection);
-
                             }
                         }
+                        break;
                     } else if (selection.equals("3")) {
                         String contactName = "";
                         System.out.println("Enter the name of the contact to delete: ");
@@ -91,7 +92,7 @@ public class Phonebook {
                                 addressBook.deleteContact(c);
                             }
                         }
-
+                    break;
                     } else if (selection.equals("4")) {
                         addressBook.displayAll();
                         System.out.println();
@@ -107,16 +108,13 @@ public class Phonebook {
                     break;
                 case CALL_HISTORY:
                     displayMenu(3);
-                    System.out.println("Displaying call history: ");
                     calls.displayLog();
-                    System.out.println();
                     break;
                 case QUIT_OPTION:
                     System.out.println("Goodbye.");
                     break;
                 default:
                     System.out.println("Please type one of the options in the menu.");
-
             }
         } while (!userChoice.equals(QUIT_OPTION));
     }
@@ -140,15 +138,16 @@ public class Phonebook {
                 break;
             case 1:
                 //Contact Book Sub-menu
-                System.out.println("1. Add contact\n2. Edit contact\n3. Delete contact\n4. Display contacts");
+                System.out.println("1. Add contact\n2. Edit contact\n3. Delete contact\n4. Display contacts\n5. Add Favorite Contact");
                 break;
-
             case 2:
                 //Receive Call Sub-menu
                 System.out.println("Enter the number that is calling, or the name of a contact: ");
                 break;
             case 3:
                 //Call History Sub-menu
+                System.out.println("Displaying call history:");
+                System.out.println();
                 break;
             default:
                 System.out.println("Please type one of the options in the menu");

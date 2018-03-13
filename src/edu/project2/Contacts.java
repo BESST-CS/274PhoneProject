@@ -29,8 +29,8 @@ public class Contacts{
     public void displayAll() {
     	for(Contact c: list) {
     		c.displayContact();
-    		System.out.println("\n");
     	}
+        System.out.println("\n");
     }
 
     public void editContact(Contact c, int i){
