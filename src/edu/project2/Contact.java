@@ -8,6 +8,7 @@ package edu.project2;
  * @since - 3/1/2018
  */
 
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -87,6 +88,12 @@ public class Contact implements Comparable{
      * @return Returns the notes as a String
      */
     public String getNote(){return this.note;}
+
+    /**
+     * Checks for a Contact object with a picture
+     * @return Returns boolean value if there is a picture attached or not.
+     */
+    public boolean hasPicture(){return picture != null;}
 
     /**
      * Displays the contact object as a Picture, if that is instansiated

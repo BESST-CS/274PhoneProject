@@ -126,8 +126,10 @@ public class Phonebook {
                         email = userInput.nextLine();
                         System.out.println("Are there any notes for the contact?");
                         note = userInput.nextLine();
+                        System.out.println("What is the file path for the picture?");
+                        String path = userInput.nextLine();
 
-                        Contact c = new Contact(name, number, email, note);
+                        Contact c = new Contact(name, number, email, note, path);
                         System.out.println("Adding favorite contact!");
                         addressBook.addContact(c);
                     }

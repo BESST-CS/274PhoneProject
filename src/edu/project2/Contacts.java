@@ -7,8 +7,6 @@ package edu.project2;
  * @version - 1.0.0
  * @since - 3/1/2018
  */
-
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -35,8 +33,13 @@ public class Contacts{
      * @param c - Contact object with information filled in
      */
     public void addContact(Contact c){
-        list.add(c);
+        if(c.hasPicture()){
+            favorites.add(c);
+        }else{
+            list.add(c);
+        }
         Collections.sort(list);
+        Collections.sort(favorites);
     }
 
     /**
