@@ -45,7 +45,7 @@ public class Phonebook {
         //Main menu do/while loop with switch case
         do {
             displayMenu(0);
-            userChoice = userInput.next();
+            userChoice = userInput.nextLine();
             //Switch case
             switch (userChoice) {
                 case MAKE_CALL:
@@ -59,7 +59,6 @@ public class Phonebook {
                     //Opens the contact book sub-menu
                     System.out.println("Opening contact book, what would you like to do?");
                     displayMenu(1);
-                    userInput.nextLine();
                     String selection = userInput.nextLine();
                     if (selection.equals("1")) {
                         //Ask for data first
@@ -97,7 +96,7 @@ public class Phonebook {
                     } else if (selection.equals("3")) {
                         String contactName = "";
                         System.out.println("Enter the name of the contact to delete: ");
-                        contactName = userInput.next();
+                        contactName = userInput.nextLine();
                         for (Contact c: addressBook.list){
                             if (c.getName().equals(contactName)){
                                 System.out.println("Deleting: " + c.getName() + " from contacts.");

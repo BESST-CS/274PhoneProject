@@ -51,8 +51,18 @@ public class Calls {
         return format2.format(LocalDateTime.now()) + " " + concat;
     }
 
+    /**
+     * Modifies a phone number to appear in the (XXX) XXX-XXXX format.
+     * @param num Number to be modified
+     * @return Returns a value in the proper format.
+     */
     private String modNumber(String num){
-        return "(" + num.substring(0, 3) + ") " + num.substring(3, 6) + "-" + num.substring(6);
+        if(num.length() == 10) {
+            return "(" + num.substring(0, 3) + ") " + num.substring(3, 6) + "-" + num.substring(6);
+        }else if(num.length() == 7){
+            return num.substring(0,3)+"-"+num.substring(3);
+        }
+        return null;
     }
 
     /**
@@ -62,9 +72,9 @@ public class Calls {
      */
     public void makeCall(String target, String direction){
         if(direction.equals("OUTGOING") && target.length() == 1){
-            target = contacts.favorites.get(Integer.valueOf(target)).getNumber();
+            target = modNumber(contacts.favorites.get(Integer.valueOf(target)).getNumber());
         }
-        if(target.matches("[a-zA-Z]+")){
+        else if(target.matches("[a-zA-Z]+")){
             for(Contact c : contacts.list){
                 if(target.equals(c.getName())){
                     target = c.getNumber();
@@ -75,7 +85,10 @@ public class Calls {
                     target = c.getNumber();
                 }
             }
+        }else {
+            target = modNumber(target);
         }
+
         if(log.containsKey(target)){
             log.get(target).add(getDate().concat("          "+direction));
         }else{
@@ -99,16 +112,20 @@ public class Calls {
         while(true){
             for(String i : log.keySet()){
                 hasContact = false;
-                for(Contact c : contacts.list){
-                    if(c.getNumber().equals(i)){
-                        hasContact = true;
-                        place = c;
+                if(i.matches("[0-9]+")){
+                    i = modNumber(i);
+                }else{
+                    for(Contact c : contacts.list){
+                        if(c.getNumber().equals(i)){
+                            hasContact = true;
+                            place = c;
+                        }
                     }
-                }
-                for(Contact c : contacts.favorites){
-                    if(c.getNumber().equals(i)){
-                        hasContact = true;
-                        place = c;
+                    for(Contact c : contacts.favorites){
+                        if(c.getNumber().equals(i)){
+                            hasContact = true;
+                            place = c;
+                        }
                     }
                 }
                 if(hasContact){
@@ -122,7 +139,7 @@ public class Calls {
             if(select != 0 && select-1 <= log.keySet().size()){
                 System.out.println(log.keySet().toArray()[select-1]+":");
                 for(String s : log.get(log.keySet().toArray()[select-1])){
-                    System.out.println("\t"+s);
+                    System.out.println("\t"+modNumber(s));
                 }
             }
             else if(select == 0){

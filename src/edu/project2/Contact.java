@@ -41,7 +41,7 @@ public class Contact implements Comparable{
      */
     public Contact(String name, String number, String email, String note){
         this.name = name;
-        this.number = number;
+        this.number = modNumber(number);
         this.email = email;
         this.note = note;
         picture = null;
@@ -57,10 +57,24 @@ public class Contact implements Comparable{
      */
     public Contact(String name, String number, String email, String note, String directory){
         this.name = name;
-        this.number = number;
+        this.number = modNumber(number);
         this.email = email;
         this.note = note;
-        this.picture = new FavoriteContactFrame(directory, 400, 400, name, number, email, note);
+        this.picture = new FavoriteContactFrame(directory, 400, 400, name, modNumber(number), email, note);
+    }
+
+    /**
+     * Modifies a phone number to appear in the (XXX) XXX-XXXX format.
+     * @param num Number to be modified
+     * @return Returns a value in the proper format.
+     */
+    private String modNumber(String num){
+        if(num.length() == 10) {
+            return "(" + num.substring(0, 3) + ") " + num.substring(3, 6) + "-" + num.substring(6);
+        }else if(num.length() == 7){
+            return num.substring(0,3)+"-"+num.substring(3);
+        }
+        return null;
     }
 
     /**
