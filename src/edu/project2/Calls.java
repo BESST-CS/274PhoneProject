@@ -139,7 +139,7 @@ public class Calls {
             if(select != 0 && select-1 <= log.keySet().size()){
                 System.out.println(log.keySet().toArray()[select-1]+":");
                 for(String s : log.get(log.keySet().toArray()[select-1])){
-                    System.out.println("\t"+modNumber(s));
+                    System.out.println("\t"+s);
                 }
             }
             else if(select == 0){
