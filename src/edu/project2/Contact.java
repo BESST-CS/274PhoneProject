@@ -1,5 +1,12 @@
 package edu.project2;
-//Created by Sean C. on 3/8/2018
+/**
+ * @author - Sean Curley - seancurley007@gmail.com
+ * @author - Hunter Davis - huntertigerdavis@gmail.com
+ * @author - Yosseline Velasco -
+ *
+ * @version - 1.0.0
+ * @since - 3/1/2018
+ */
 
 import java.util.List;
 

@@ -1,14 +1,20 @@
 package edu.project2;
-//Created by Sean C. on 3/1/2018
+/**
+ * @author - Sean Curley - seancurley007@gmail.com
+ * @author - Hunter Davis - huntertigerdavis@gmail.com
+ * @author - Yosseline Velasco -
+ *
+ * @version - 1.0.0
+ * @since - 3/1/2018
+ */
 
-import com.sun.org.apache.xpath.internal.SourceTree;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
 /**
- * Handles a list of all the contacts.  Includes methods to add, delete, and modify contacts.  Handles creation of Contact objects
+ * Handles a list of all the contacts. Includes methods to add, delete, and modify contacts.  Handles creation of Contact objects
  */
 public class Contacts{
 
@@ -16,23 +22,41 @@ public class Contacts{
     public ArrayList<Contact> favorites;
     public ArrayList<Contact> list;
 
+    /**
+     * Default Constructor
+     */
     public Contacts(){
         favorites = new ArrayList<>();
         list = new ArrayList<>();
     }
 
+    /**
+     * Adds a filled in Contact object to the ArrayList of contacts
+     * @param c - Contact object with information filled in
+     */
     public void addContact(Contact c){
         list.add(c);
         Collections.sort(list);
     }
-    
+
+    /**
+     * Prints all of the contacts with formatting to the console
+     */
     public void displayAll() {
-    	for(Contact c: list) {
+    	for(Contact c: favorites){
+    	    displayFavs();
+        }
+        for(Contact c: list) {
     		c.displayContact();
+    		System.out.println("\n");
     	}
-        System.out.println("\n");
     }
 
+    /**
+     * Edits a contact's specific data value (name, number, email, note)
+     * @param c - Contact object
+     * @param i - integer with index of data value to change in the contact
+     */
     public void editContact(Contact c, int i){
 
         //Editing the name of the contact
@@ -63,25 +87,41 @@ public class Contacts{
             deleteContact(c);
         }
     }
-    
+
+    /**
+     * Deletes a selected contact
+     * @param c - Contact object to delete from the ArrayList
+     */
     public void deleteContact(Contact c){
     	list.remove(c);
+    	favorites.remove(c);
     }
-    
+
+    /**
+     * Contact that is to be added to the favorites
+     * @param c - Contact object
+     */
     public void addFavContact(Contact c) {
     	favorites.add(c);
     	Collections.sort(favorites);
     }
-    
+
+    /**
+     * Displays the favorite contacts
+     */
     public void displayFavs() {
     	for(Contact c: favorites) {
     		c.displayContact();
     		System.out.println("\n");
     	}
 	}
-    
-    public void deleteFavContact(int i) {
-    	list.remove(i);
+
+    /**
+     * Deletes a selected favorite contact
+     * @param c - Contact object to delete
+     */
+    public void deleteFavContact(Contact c) {
+        list.remove(c);
     }
 
 }
