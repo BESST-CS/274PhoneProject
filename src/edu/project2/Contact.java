@@ -16,6 +16,14 @@ public class Contact implements Comparable{
     private String note;
     private FavoriteContactFrame picture;
 
+    public Contact(){
+        name = null;
+        number = null;
+        email = null;
+        note = null;
+        picture = null;
+    }
+
     public Contact(String name, String number, String email, String note){
         this.name = name;
         this.number = number;
@@ -77,7 +85,6 @@ public class Contact implements Comparable{
         int select = k.nextInt();
         switch(select){
             case 1:
-
                 break;
             case 2:
                 break;
